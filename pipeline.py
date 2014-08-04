@@ -30,7 +30,7 @@ if StrictVersion(seesaw.__version__) < StrictVersion("0.1.5"):
 #
 # Update this each time you make a non-cosmetic change.
 # It will be added to the WARC files and reported to the tracker.
-VERSION = "20140803.04"
+VERSION = "20140803.05"
 USER_AGENT = 'ArchiveTeam'
 TRACKER_ID = 'fotodisco'
 TRACKER_HOST = 'tracker.archiveteam.org'
@@ -159,7 +159,7 @@ pipeline = Pipeline(
         defaults={"downloader": downloader, "version": VERSION},
         file_groups={
             "data": [
-                ItemInterpolation("%(item_dir)s/%(warc_file_base)s.warc.gz")
+                ItemInterpolation("%(item_dir)s/%(warc_file_base)s.txt.gz")
             ]
         },
         id_function=stats_id_function,
