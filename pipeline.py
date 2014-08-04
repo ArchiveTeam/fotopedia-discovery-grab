@@ -30,7 +30,7 @@ if StrictVersion(seesaw.__version__) < StrictVersion("0.1.5"):
 #
 # Update this each time you make a non-cosmetic change.
 # It will be added to the WARC files and reported to the tracker.
-VERSION = "20140803.03"
+VERSION = "20140803.04"
 USER_AGENT = 'ArchiveTeam'
 TRACKER_ID = 'fotodisco'
 TRACKER_HOST = 'tracker.archiveteam.org'
@@ -148,7 +148,7 @@ pipeline = Pipeline(
     GetItemFromTracker("http://%s/%s" % (TRACKER_HOST, TRACKER_ID), downloader,
         VERSION),
     PrepareDirectories(warc_prefix="fotopedia"),
-    ExternalProcess('Scraper', ['python', 'fotofinished.py', ItemValue('item_name'), ItemInterpolation("%(item_dir)s/%(warc_file_base)s.txt.gz")],
+    ExternalProcess('Scraper', ['python', 'fotofinished.py', ItemValue('item_name'), ItemInterpolation("%(item_dir)s/%(warc_file_base)s.txt")],
         max_tries=5,
         accept_on_exit_code=[0],
         env={
