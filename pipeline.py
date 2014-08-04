@@ -134,11 +134,11 @@ def stats_id_function(item):
 # This will be shown in the warrior management panel. The logo should not
 # be too big. The deadline is optional.
 project = Project(
-    title="Yahoo Voices",
+    title="Fotopedia Discovery",
     project_html="""
         <img class="project-logo" alt="Project logo" src="http://archiveteam.org/images/a/aa/Fotopedia_Logo.png" height="50px" title=""/>
         <h2>Fotopedia <span class="links"><a href="http://fotopedia.com/">Website</a> &middot; <a href="http://tracker.archiveteam.org/fotodisco/">Leaderboard</a></span></h2>
-        <p>Fotopedia is shutting down. This project is Phase 1.</p>
+        <p>Fotopedia is shutting down. This project is Phase 1: discovering content.</p>
     """,
     utc_deadline=datetime.datetime(2014, 8, 6, 23, 59, 0)
 )
