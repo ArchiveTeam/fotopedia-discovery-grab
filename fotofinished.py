@@ -49,7 +49,8 @@ def main():
 def paginate_user(template, username):
     print('Grabbing', template, username)
 
-    for offset in itertools.count(step=100):
+    offset = 0
+    while True:
         print('Offset:', offset)
 
         response = requests.get(
@@ -71,6 +72,7 @@ def paginate_user(template, username):
 
         remain = doc['totalNumberOfItems'] - offset
         print('Remain:', remain)
+        offset += 100
 
 if __name__ == '__main__':
     main()
