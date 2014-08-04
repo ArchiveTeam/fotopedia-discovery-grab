@@ -1,4 +1,5 @@
 '''Get fotopedia.com URLs.'''
+import gzip
 import io
 import itertools
 import re
@@ -36,6 +37,13 @@ def main():
     with io.open(output_filename, 'w', encoding='utf8') as f:
         for item in sorted(items):
             f.write(u'{0}|{1}\n'.format(item[0], item[1]))
+
+    gzip_file = gzip.GzipFile(output_filename + '.gz', 'wb')
+
+    with open(output_filename, 'rb') as result_file:
+        gzip_file.write(result_file.read())
+
+    gzip_file.close()
 
 
 def paginate_user(template, username):
