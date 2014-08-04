@@ -30,7 +30,7 @@ if StrictVersion(seesaw.__version__) < StrictVersion("0.1.5"):
 #
 # Update this each time you make a non-cosmetic change.
 # It will be added to the WARC files and reported to the tracker.
-VERSION = "20140803.02"
+VERSION = "20140803.03"
 USER_AGENT = 'ArchiveTeam'
 TRACKER_ID = 'fotodisco'
 TRACKER_HOST = 'tracker.archiveteam.org'
@@ -45,17 +45,34 @@ TRACKER_HOST = 'tracker.archiveteam.org'
 class CheckIP(SimpleTask):
     def __init__(self):
         SimpleTask.__init__(self, "CheckIP")
+        self._counter = 0
 
     def process(self, item):
         # NEW for 2014! Check if we are behind firewall/proxy
-        ip_str = socket.gethostbyname('fotopedia.com')
 
-        if not ip_str.startswith('54.225.175.'):
-            item.log_output('Got IP address: %s' % ip_str)
-            item.log_output(
-                'Are you behind a firewall/proxy? That is a big no-no!')
-            raise Exception(
-                'Are you behind a firewall/proxy? That is a big no-no!')
+        if self._counter <= 0:
+            item.log_output('Checking IP address.')
+            ip_set = set()
+
+            ip_set.add(socket.gethostbyname('twitter.com'))
+            ip_set.add(socket.gethostbyname('facebook.com'))
+            ip_set.add(socket.gethostbyname('youtube.com'))
+            ip_set.add(socket.gethostbyname('microsoft.com'))
+            ip_set.add(socket.gethostbyname('icanhas.cheezburger.com'))
+            ip_set.add(socket.gethostbyname('archiveteam.org'))
+
+            if len(ip_set) != 6:
+                item.log_output('Got IP addresses: {0}'.format(ip_set))
+                item.log_output(
+                    'Are you behind a firewall/proxy? That is a big no-no!')
+                raise Exception(
+                    'Are you behind a firewall/proxy? That is a big no-no!')
+
+        # Check only occasionally
+        if self._counter <= 0:
+            self._counter = 10
+        else:
+            self._counter -= 1
 
 
 class PrepareDirectories(SimpleTask):
