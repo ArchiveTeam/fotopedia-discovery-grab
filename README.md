@@ -3,7 +3,7 @@ fotopedia-discovery-grab
 
 Discovering fotopedia.com content
 
-More information about the archiving project can be found on the ArchiveTeam wiki: [{{Fotopedia}}](http://archiveteam.org/index.php?title={{Fotopedia}})
+More information about the archiving project can be found on the ArchiveTeam wiki: [Fotopedia](http://archiveteam.org/index.php?title=Fotopedia)
 
 Setup instructions
 =========================
@@ -17,7 +17,7 @@ In most of the below cases, there will be a web interface running at http://loca
 Running with a warrior
 -------------------------
 
-Follow the [instructions on the ArchiveTeam wiki](http://archiveteam.org/index.php?title=Warrior) for installing the Warrior, and select the "{{Fotopedia}}" project in the Warrior interface.
+Follow the [instructions on the ArchiveTeam wiki](http://archiveteam.org/index.php?title=Warrior) for installing the Warrior, and select the "Fotopedia" project in the Warrior interface.
 
 Running without a warrior
 -------------------------
