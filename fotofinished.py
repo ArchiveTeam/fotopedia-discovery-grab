@@ -59,7 +59,14 @@ def paginate_user(template, username):
             params={'offset': offset, 'limit': 100}
             )
 
-        doc = response.json()
+        try:
+            doc = response.json()
+        except ValueError:
+            if "Wow. It looks like you've found a bug." in response.text:
+                print('Found a bug.')
+                return
+            else:
+                raise
 
         if not doc['items']:
             break
